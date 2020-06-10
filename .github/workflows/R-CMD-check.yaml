@@ -58,6 +58,19 @@ jobs:
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
 
+      - name: Install Julia
+        if: runner.os == 'Linux'
+        env:
+          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
+        run: |
+          curl -L https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.2-linux-x86_64.tar.gz -o "$HOME/Downloads/julia.tar.gz"; fi
+          tar xzf "$HOME/Downloads/julia.tar.gz" -C "$HOME/Downloads"; fi
+          cp -r "$(find "$HOME/Downloads" -maxdepth 2 -name "julia*" -type d | head -n 1)" "$HOME/julia"; fi
+          rm -rf ~/Downloads/julia*
+          export PATH="$HOME/julia/bin:$PATH"
+          if [ "$TRAVIS_OS_NAME" == "linux" ]; then export R_LD_LIBRARY_PATH="$(R RHOME)/lib:$HOME/julia/lib/julia"; fi
+          julia -e 'Pkg.add("DataFrames")'
+
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
