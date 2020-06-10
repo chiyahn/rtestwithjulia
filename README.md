@@ -1,4 +1,4 @@
 # rtestwithjulia
-
-[![Build
-Status](https://travis-ci.com/chiyahn/rtestwithjulia.svg?branch=master)](https://travis-ci.com/chiyahn/rtestwithjulia)
+  <!-- badges: start -->
+  [![R build status](https://github.com/chiyahn/rtestwithjulia/workflows/R-CMD-check/badge.svg)](https://github.com/chiyahn/rtestwithjulia/actions)
+  <!-- badges: end -->
