@@ -31,4 +31,4 @@ before_install:
 - julia -e 'Pkg.add("StatsModels")'
 - julia -e 'Pkg.add("Distributions")'
 - julia -e 'Pkg.add("DataFrames")'
-
+- julia -e 'Pkg.add("RCall")'
