@@ -69,8 +69,9 @@ jobs:
           cp -r "$(find "$HOME/Downloads" -maxdepth 2 -name "julia*" -type d | head -n 1)" "$HOME/julia"
           rm -rf ~/Downloads/julia*
           export PATH="$HOME/julia/bin:$PATH"
-          if [ "$TRAVIS_OS_NAME" == "linux" ]; then export R_LD_LIBRARY_PATH="$(R RHOME)/lib:$HOME/julia/lib/julia"
+          export R_LD_LIBRARY_PATH="$(R RHOME)/lib:$HOME/julia/lib/julia"
           julia -e 'Pkg.add("DataFrames")'
+          julia -e 'Pkg.add("RCall")'
 
       - name: Install dependencies
         run: |
