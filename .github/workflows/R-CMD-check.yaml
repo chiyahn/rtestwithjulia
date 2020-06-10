@@ -63,12 +63,12 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
-          curl -L https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.2-linux-x86_64.tar.gz -o "$HOME/Downloads/julia.tar.gz"; fi
-          tar xzf "$HOME/Downloads/julia.tar.gz" -C "$HOME/Downloads"; fi
-          cp -r "$(find "$HOME/Downloads" -maxdepth 2 -name "julia*" -type d | head -n 1)" "$HOME/julia"; fi
+          curl -L https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.2-linux-x86_64.tar.gz -o "$HOME/Downloads/julia.tar.gz"
+          tar xzf "$HOME/Downloads/julia.tar.gz" -C "$HOME/Downloads"
+          cp -r "$(find "$HOME/Downloads" -maxdepth 2 -name "julia*" -type d | head -n 1)" "$HOME/julia"
           rm -rf ~/Downloads/julia*
           export PATH="$HOME/julia/bin:$PATH"
-          if [ "$TRAVIS_OS_NAME" == "linux" ]; then export R_LD_LIBRARY_PATH="$(R RHOME)/lib:$HOME/julia/lib/julia"; fi
+          if [ "$TRAVIS_OS_NAME" == "linux" ]; then export R_LD_LIBRARY_PATH="$(R RHOME)/lib:$HOME/julia/lib/julia"
           julia -e 'Pkg.add("DataFrames")'
 
       - name: Install dependencies
