@@ -70,8 +70,8 @@ jobs:
           rm -rf ~/Downloads/julia*
           export PATH="$HOME/julia/bin:$PATH"
           export R_LD_LIBRARY_PATH="$(R RHOME)/lib:$HOME/julia/lib/julia"
-          julia -e 'Pkg.add("DataFrames")'
-          julia -e 'Pkg.add("RCall")'
+          julia -e 'using Pkg; Pkg.add("DataFrames")'
+          julia -e 'using Pkg; Pkg.add("RCall")'
 
       - name: Install dependencies
         run: |
